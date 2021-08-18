@@ -137,11 +137,16 @@ headingText("skill");
 
 async function postContactForm(e) {
   e.preventDefault();
+  const firstname = document.querySelector("#input-firstname").value;
+  const lastname = document.querySelector("#input-lastname").value;
   const email = document.querySelector("#inputEmail").value;
+  const subject = document.querySelector("#input-subject").value;
   const message = document.querySelector("#inputMessage").value;
-  if (!message || !email) return showAlert("Field can not be empty", "danger");
+  if (!firstname || !lastname || !subject || !message || !email)
+    return showAlert("Field can not be empty", "danger");
   try {
-    let BASE_URL = "https://yhorbhar.herokuapp.com/";
+    // let BASE_URL = "https://yhorbhar.herokuapp.com/";
+    let BASE_URL = "http://localhost:3000/";
     const response = await fetch(`${BASE_URL}contact`, {
       method: "POST",
       headers: {
@@ -149,10 +154,14 @@ async function postContactForm(e) {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
+        firstname,
+        lastname,
         email,
+        subject,
         message,
       }),
     });
+
     const data = await response.json();
     showAlert(`${data.message}`, "success");
     contactForm.reset();
