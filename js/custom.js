@@ -145,8 +145,7 @@ async function postContactForm(e) {
   if (!firstname || !lastname || !subject || !message || !email)
     return showAlert("Field can not be empty", "danger");
   try {
-    // let BASE_URL = "https://yhorbhar.herokuapp.com/";
-    let BASE_URL = "http://localhost:3000/";
+    let BASE_URL = "https://samspecial-resume.herokuapp.com/";
     const response = await fetch(`${BASE_URL}contact`, {
       method: "POST",
       headers: {
