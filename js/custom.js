@@ -182,7 +182,7 @@ function showAlert(message, type) {
 
   setTimeout(function () {
     alertMessage.style.display = "none";
-  }, 10000);
+  }, 15000);
 }
 
 // Typewriter Effect
